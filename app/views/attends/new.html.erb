@@ -1,23 +1,24 @@
-  <%=form_with model: @attend, local: true do |f|%>
-    <h1>出席確認</h1>
+<div class="main">
+  <%=form_with model: @attend,class:"form-content", local: true do |f|%>
+    <h1 class="title">出席確認</h1>
     <div >
-      <p>名前</p>
-      <%= f.text_field :name %>
+      <p class="sub_title">名前</p>
+      <%= f.text_field :name, class:"form", id:"name" %>
     </div>
     <div>
-      <p >学籍番号</p>
-      <%= f.text_area :student_number %>
+      <p class="sub_title">学籍番号</p>
+      <%= f.text_field :student_number, class:"form", id:"student_number" %>
     </div>
     <div >
-      <p >緯度</p>
-      <%= f.text_field :latitude %>
+      <p class="sub_title">緯度</p>
+      <%= f.text_field :latitude, class:"form", id:"latitude" %>
     </div>
     <div>
-      <p >経度</p>
-      <%= f.text_field :longitude %>
+      <p class="sub_title">経度</p>
+      <%= f.text_field :longitude,class:"form", id:"longitude" %>
     </div>
     <div >
-      <%= f.submit "作成する"%>
+      <%= f.submit "出席する" ,class:"btn"%>
     </div>
   <%end%>
 </div>

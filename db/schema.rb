@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2021_09_24_233156) do
     t.decimal "longitude", precision: 10
     t.string "student_number"
     t.string "name"
+    t.string "ip"
   end
 
 end

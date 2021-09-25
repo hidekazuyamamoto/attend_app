@@ -7,6 +7,7 @@ class CreateAttends < ActiveRecord::Migration[6.0]
       t.decimal :longitude, nill: false
       t.string :student_number, nill: false
       t.string :name, nill: false
+      t.string :ip
     end
   end
 end
