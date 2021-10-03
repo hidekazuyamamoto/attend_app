@@ -1,5 +1,6 @@
 <div class="main">
   <%=form_with model: @attend,class:"form-content", local: true do |f|%>
+  <%= render 'error_message', model: f.object %>
     <h1 class="title">出席確認</h1>
     <div >
       <p class="sub_title">名前</p>
@@ -9,11 +10,11 @@
       <p class="sub_title">学籍番号</p>
       <%= f.text_field :student_number, class:"form", id:"student_number" %>
     </div>
-    <div >
+    <div class="hidden">
       <p class="sub_title">緯度</p>
       <%= f.text_field :latitude, class:"form", id:"latitude" %>
     </div>
-    <div>
+    <div class="hidden">
       <p class="sub_title">経度</p>
       <%= f.text_field :longitude,class:"form", id:"longitude" %>
     </div>
@@ -21,4 +22,34 @@
       <%= f.submit "出席する" ,class:"btn"%>
     </div>
   <%end%>
+  <div class="create-date">
+    <%= button_to "csvで出力する",new_attend_path(format: :csv), class:"create-date-message" %>
+  </div>
+  <div class="attended">
+    <div class="name">
+    名前
+    </div>
+    <div class="number">
+    学籍番号
+    </div>
+    <div class="time">
+    時間
+    </div>
+  </div>
+  <%if @attends.exists?%>
+  <% @attends.each do |attend|%>
+    <div class="attended">
+    <div class="name">
+    <%= attend.name%>
+    </div>
+    <div class="number">
+    <%= attend.student_number%>
+    </div>
+    <div class="time">
+    <%= attend.created_at.to_s(:datetime_jp)%>
+    </div>
+  </div>
+  <%end%>
+  <%end%>
+  <%= button_to "保存できたので削除", destroy_all_attends_path, method: :delete , class:"delete-btn"%>
 </div>
