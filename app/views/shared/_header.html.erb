@@ -7,7 +7,7 @@
   <div class="header-right-contents">
   <% if user_signed_in? %>
     <div class="right-content">
-    <a href="#" class="user-devise right">教科を作成する</a>
+    <%=link_to "教科を作成する", new_subject_path, class:"user-devise right"%>
     </div>
     <div class="left-contents">
     <%= link_to "ログアウトする", destroy_user_session_path, class:"user-devise right", method: :delete%>

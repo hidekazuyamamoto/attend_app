@@ -1,7 +1,17 @@
 <%= render "shared/header" %>
+<div class="main">
 <% if user_signed_in? %>
-<p class="message">教科を作成しましょう</p>
+<div class="subject-contents">
+  <%if @subject.exists?%>
+      <% @subject.each do |subject| %>
+      <%=subject.subject%>
+    <% end %>
+  <%else%>
+  <p class="message">教科を作成しましょう</p>
+  <%end%>
+</div>
 <%else%>
-<p class="message">ログインしてください</p>
+  <p class="message">ログインしてください</p>
 <%end%>
+</div>
 <%= render "shared/footer" %>

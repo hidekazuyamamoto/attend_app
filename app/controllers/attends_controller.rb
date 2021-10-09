@@ -2,6 +2,7 @@ class AttendsController < ApplicationController
   require 'csv'
   
   def index
+    @subject = Subject.where(user_id: current_user.id).order("week_id ASC")
   end
 
   def new
