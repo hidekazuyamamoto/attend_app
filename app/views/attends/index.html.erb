@@ -1,0 +1,7 @@
+<%= render "shared/header" %>
+<% if user_signed_in? %>
+<p class="message">教科を作成しましょう</p>
+<%else%>
+<p class="message">ログインしてください</p>
+<%end%>
+<%= render "shared/footer" %>

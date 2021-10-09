@@ -1,5 +1,9 @@
 class AttendsController < ApplicationController
   require 'csv'
+  
+  def index
+  end
+
   def new
     @attend = Attend.new
     @attends = Attend.all

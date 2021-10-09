@@ -1,0 +1,21 @@
+<%= render "shared/header" %>
+<div class="main">
+  <%=form_with model: @user, url: user_registration_path,class:"form-content-registration", local: true do |f|%>
+    <div >
+      <p class="sub_title-registration">メールアドレス</p>
+      <%= f.email_field :email, class:"form-registration"%>
+    </div>
+    <div>
+      <p class="sub_title-registration">パスワード</p>
+      <%= f.password_field :password, class:"form-registration"%>
+    </div>
+    <div>
+      <p class="sub_title-registration">パスワード確認</p>
+      <%= f.password_field :password_confirmation, class:"form-registration"%>
+    </div>
+    <div >
+      <%= f.submit "登録する" ,class:"btn"%>
+    </div>
+  <%end%>
+</div>
+<%= render "shared/footer" %>

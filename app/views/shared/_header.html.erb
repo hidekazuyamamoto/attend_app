@@ -1,0 +1,24 @@
+<div class="header">
+  <div class="header-left-contents">
+    <div class="title-contents">
+      <h1 class="app-title">出席管理</h1>
+    </div>
+  </div>
+  <div class="header-right-contents">
+  <% if user_signed_in? %>
+    <div class="right-content">
+    <a href="#" class="user-devise right">教科を作成する</a>
+    </div>
+    <div class="left-contents">
+    <%= link_to "ログアウトする", destroy_user_session_path, class:"user-devise right", method: :delete%>
+    </div>
+  <%else%>
+    <div class="right-content">
+    <%= link_to "ログインする", new_user_session_path, class:"user-devise right"%>
+    </div>
+    <div class="left-contents">
+    <%= link_to "新規登録する", new_user_registration_path, class:"user-devise left"%>
+    </div>
+  <%end%>
+  </div>
+</div>
