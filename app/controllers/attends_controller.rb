@@ -2,10 +2,13 @@ class AttendsController < ApplicationController
   require 'csv'
   
   def index
+    if user_signed_in?
     @subject = Subject.where(user_id: current_user.id).order("week_id ASC")
+    end
   end
 
   def new
+    @subject = Subject.find(params[:subject_id])
     @attend = Attend.new
     @attends = Attend.all
     respond_to do |format|
@@ -17,6 +20,7 @@ class AttendsController < ApplicationController
   end
 
   def create
+    @subject = Subject.find(params[:subject_id])
     @attend = Attend.new(params_attend)
     @attends = Attend.all
     unless @attend.save
@@ -32,7 +36,7 @@ class AttendsController < ApplicationController
 
     def params_attend
       @ip = request.remote_ip
-      params.require(:attend).permit(:name ,:student_number, :latitude, :longitude).merge(ip: @ip)
+      params.require(:attend).permit(:name ,:student_number, :latitude, :longitude).merge(ip: @ip, subject_id: params[:subject_id])
     end
     def send_posts_csv(attends)
       csv_data = CSV.generate do |csv|

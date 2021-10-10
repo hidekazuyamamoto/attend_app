@@ -1,0 +1,36 @@
+a{
+  text-decoration: none;
+}
+.subject-contents{
+  display: flex;
+  justify-content: space-around;
+}
+.subject-content{
+  display: flex;
+}
+.subject-title{
+  display: block;
+  margin-right: 30px;
+  font-size: 50px;
+  font-weight: 900;
+}
+.sub-subject-title{
+  display: block;
+  margin: 0;
+  margin-top: 30px;
+  font-size: 20px;
+}
+.subject-attend-btn{
+  display: block;
+  font-size: 30px;
+  margin-top: 10px;
+  margin: 10px;
+  border: 2px solid black;
+}
+.subject-content-edit{
+  display: block;
+}
+.subject-content-edit{
+  margin-bottom: 20px;
+  border: 2px solid black;
+}

@@ -3,6 +3,7 @@ class CreateAttends < ActiveRecord::Migration[6.0]
     create_table :attends do |t|
 
       t.timestamps
+      t.references :subject , nill:false, forgin_key: true
       t.decimal :latitude, nill: false, :precision => 9, :scale => 6
       t.decimal :longitude, nill: false, :precision => 9, :scale => 6
       t.string :student_number, nill: false

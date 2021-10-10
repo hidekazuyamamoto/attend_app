@@ -1,0 +1,21 @@
+<%= render "shared/header" %>
+<div class="main">
+  <%=form_with model: @subject, class:"form-content-registration", local: true do |f|%>
+    <div >
+      <p class="sub_title-registration">教科名</p>
+      <%= f.text_field :subject, class:"form-registration"%>
+    </div>
+    <div>
+      <p class="sub_title-registration">開始時限</p>
+      <%= f.collection_select(:timetable_id, Timetable.all, :id, :name, {}, {class:"form-registration"}) %>
+    </div>
+    <div>
+      <p class="sub_title-registration">曜日</p>
+      <%= f.collection_select(:week_id, Week.all, :id, :name, {}, {class:"form-registration"}) %>
+    </div>
+    <div >
+      <%= f.submit "登録する" ,class:"btn"%>
+    </div>
+  <%end%>
+</div>
+<%= render "shared/footer" %>

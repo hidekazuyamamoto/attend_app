@@ -1,6 +1,6 @@
 <%= render "shared/header" %>
 <div class="main">
-  <%=form_with model: @attend,class:"form-content", local: true do |f|%>
+  <%=form_with model: [@subject, @attend],class:"form-content", local: true do |f|%>
   <%= render 'error_message', model: f.object %>
     <h1 class="title">出席確認</h1>
     <div >
@@ -23,8 +23,9 @@
       <%= f.submit "出席する" ,class:"btn"%>
     </div>
   <%end%>
+  <% if user_signed_in? %>
   <div class="create-date">
-    <%= button_to "csvで出力する",new_attend_path(format: :csv), class:"create-date-message" %>
+    <%= button_to "csvで出力する",new_subject_attend_path(format: :csv), class:"create-date-message" %>
   </div>
   <div class="attended">
     <div class="name">
@@ -37,21 +38,22 @@
     時間
     </div>
   </div>
-  <%if @attends.exists?%>
-  <% @attends.each do |attend|%>
-    <div class="attended">
-    <div class="name">
-    <%= attend.name%>
-    </div>
-    <div class="number">
-    <%= attend.student_number%>
-    </div>
-    <div class="time">
-    <%= attend.created_at.to_s(:datetime_jp)%>
-    </div>
-  </div>
+    <%if @attends.exists?%>
+      <% @attends.each do |attend|%>
+        <div class="attended">
+        <div class="name">
+        <%= attend.name%>
+        </div>
+        <div class="number">
+        <%= attend.student_number%>
+        </div>
+        <div class="time">
+        <%= attend.created_at.to_s(:datetime_jp)%>
+        </div>
+      </div>
+      <%end%>
+    <%end%>
+    <%= button_to "保存できたので削除",destroy_all_subject_attends_path, method: :delete , class:"delete-btn"%>
   <%end%>
-  <%end%>
-  <%= button_to "保存できたので削除", destroy_all_attends_path, method: :delete , class:"delete-btn"%>
 </div>
 <%= render "shared/footer" %>

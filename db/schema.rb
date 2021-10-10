@@ -15,11 +15,13 @@ ActiveRecord::Schema.define(version: 2021_10_09_002525) do
   create_table "attends", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "subject_id"
     t.decimal "latitude", precision: 9, scale: 6
     t.decimal "longitude", precision: 9, scale: 6
     t.string "student_number"
     t.string "name"
     t.string "ip"
+    t.index ["subject_id"], name: "index_attends_on_subject_id"
   end
 
   create_table "subjects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

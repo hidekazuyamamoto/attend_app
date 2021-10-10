@@ -1,17 +1,27 @@
 <%= render "shared/header" %>
 <div class="main">
-<% if user_signed_in? %>
-<div class="subject-contents">
-  <%if @subject.exists?%>
+  <% if user_signed_in? %>
+    <%if @subject.exists?%>
       <% @subject.each do |subject| %>
-      <%=subject.subject%>
-    <% end %>
+        <div class="subject-contents">
+          <div class="subject-content">
+            <%= link_to subject.subject, "#", class:"subject-title"%>
+            <p class="sub-subject-title">(<%= subject.week.name%><%= subject.timetable.name%>)</p>
+          </div>
+          <div class="subject-attend">
+            <%=link_to "出席をとる", new_subject_attend_path(subject.id), class:"subject-attend-btn"%>
+          </div>
+          <div class="subject-contents-edit">
+            <%= link_to "編集する", edit_subject_path(subject.id), class:"subject-content-edit"%>
+            <%= link_to "削除する", subject_path(subject.id), class:"subject-content-edit", method: :delete%>
+          </div>
+        </div>
+      <% end %>
+    <%else%>
+      <p class="message">教科を作成しましょう</p>
+    <%end%>
   <%else%>
-  <p class="message">教科を作成しましょう</p>
-  <%end%>
-</div>
-<%else%>
   <p class="message">ログインしてください</p>
-<%end%>
+  <%end%>
 </div>
 <%= render "shared/footer" %>
