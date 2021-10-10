@@ -11,21 +11,21 @@
       <p class="sub_title">学籍番号</p>
       <%= f.text_field :student_number, class:"form", id:"student_number" %>
     </div>
-    <div class="hidden">
+    <div>
       <p class="sub_title">緯度</p>
       <%= f.text_field :latitude, class:"form", id:"latitude" %>
     </div>
-    <div class="hidden">
+    <div>
       <p class="sub_title">経度</p>
       <%= f.text_field :longitude,class:"form", id:"longitude" %>
     </div>
     <div >
-      <%= f.submit "出席する" ,class:"btn"%>
+      <%= f.submit "出席する" ,class:"btn", id:"btn"%>
     </div>
   <%end%>
   <% if user_signed_in? %>
   <div class="create-date">
-    <%= button_to "csvで出力する",new_subject_attend_path(format: :csv), class:"create-date-message" %>
+    <%= link_to "csvで出力する",new_subject_attend_path(format: :csv), class:"create-date-message"  %>
   </div>
   <div class="attended">
     <div class="name">
@@ -36,6 +36,12 @@
     </div>
     <div class="time">
     時間
+    </div>
+    <div class="latitude">
+    緯度
+    </div>
+    <div class="longitude">
+    経度
     </div>
   </div>
     <%if @attends.exists?%>
@@ -49,6 +55,12 @@
         </div>
         <div class="time">
         <%= attend.created_at.to_s(:datetime_jp)%>
+        </div>
+        <div class="latitude">
+        <%= attend.latitude%>
+        </div>
+        <div class="longitude">
+        <%= attend.longitude%>
         </div>
       </div>
       <%end%>

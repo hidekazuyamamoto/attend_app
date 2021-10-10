@@ -40,13 +40,15 @@ class AttendsController < ApplicationController
     end
     def send_posts_csv(attends)
       csv_data = CSV.generate do |csv|
-        column_names = %w(名前 学籍番号 出席時間)
+        column_names = %w(名前 学籍番号 出席時間 緯度 経度)
         csv << column_names
         attends.each do |attend|
           column_values = [
             attend.name,
             attend.student_number,
             attend.created_at,
+            attend.latitude,
+            attend.longitude
           ]
           csv << column_values
         end
