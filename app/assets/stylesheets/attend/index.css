@@ -4,6 +4,7 @@
   justify-content: space-between;
   padding: 10px;
   background-color:rgb(242, 247, 247) ;
+  margin-bottom: 20px;
 }
 .subject-title{
   font-size: 50px;
@@ -44,4 +45,54 @@
   font-size: 50px;
   font-weight: 800;
   margin-top: 50px;
+}
+@media screen and (max-width: 428px) { /*ウィンドウ幅が最大479pxまでの場合に適用*/
+  .subject-contents{
+    border: 2px solid black;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color:rgb(242, 247, 247) ;
+  }
+  .subject-title{
+    font-size: 15px;
+    font-weight: 800;
+    display:  inline-block;
+  }
+  .sub-subject-title{
+    display:  inline-block;
+    margin-left:5px ;
+    font-size: 10px;
+  }
+  .subject-attend{
+    display: flex;
+    align-items: center;
+  }
+  .subject-attend-btn{
+    font-size: 7px;
+    font-weight: 800;
+  }
+  .subject-contents-edit{
+    display: flex;
+    align-items: center;
+  }
+  .subject-content-edit{
+    font-size: 3px;
+  }
+  .left{
+    margin-right: 3px;
+  }
+  
+  .main{
+    background-color: rgb(221, 253, 253);
+    padding: 50px;
+  }
+  .message{
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 50px;
+    font-weight: 800;
+    margin-top: 50px;
+  }
 }

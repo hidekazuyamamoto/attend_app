@@ -24,3 +24,29 @@
 .right-content{
   margin-right: 20px;
 }
+@media screen and (max-width: 428px) { /*ウィンドウ幅が最大479pxまでの場合に適用*/
+  .header{
+    display: flex;
+    justify-content: space-between;
+    height: 5vh;
+    background-color: rgb(228, 210, 245);
+  }
+  .app-title{
+    font-size: 15px;
+    font-weight: 800;
+  }
+  .header-right-contents{
+    display: flex;
+    margin-right: 30px;
+  }
+  .right-content,.left-contents{
+    font-weight: 800;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+  }
+  .right-content{
+    margin-right: 10px;
+  }
+}
