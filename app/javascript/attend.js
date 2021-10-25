@@ -9,8 +9,6 @@ if (navigator.geolocation) {
   let longitude = document.getElementById("longitude")
   latitude.value = pos.coords.latitude;
   longitude.value = pos.coords.longitude;
-  latitude.disabled=true
-  longitude.disabled=true
   });
 } 
 else {

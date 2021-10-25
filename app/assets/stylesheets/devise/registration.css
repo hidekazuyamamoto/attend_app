@@ -1,0 +1,25 @@
+.form-content-registration{
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+.sub_title-registration{
+  font-size: 30px;
+  font-weight: 800;
+  margin:20px 0 20px ;
+}
+.form-registration{
+  height: 30px;
+  width: 50%;
+  background-color: rgb(250, 250, 250);
+  border: 1px solid gray;
+}
+.btn{
+  margin-top: 50px;
+  background-color: rgb(185, 184, 184);
+  border: 1px solid 1px;
+  box-shadow: 2px 2px 2px black ;
+  font-size: 30px;
+  border-radius: 20px;
+  padding: 5px;
+}

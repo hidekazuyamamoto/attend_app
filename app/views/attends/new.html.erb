@@ -3,7 +3,7 @@
   <%=form_with model: [@subject, @attend],class:"form-content", local: true do |f|%>
   <%= render 'error_message', model: f.object %>
     <h1 class="title">出席確認</h1>
-    <div >
+    <div>
       <p class="sub_title">名前</p>
       <%= f.text_field :name, class:"form", id:"name" %>
     </div>
@@ -11,11 +11,11 @@
       <p class="sub_title">学籍番号</p>
       <%= f.text_field :student_number, class:"form", id:"student_number" %>
     </div>
-    <div>
+    <div class="hidden">
       <p class="sub_title">緯度</p>
       <%= f.text_field :latitude, class:"form", id:"latitude" %>
     </div>
-    <div>
+    <div class="hidden">
       <p class="sub_title">経度</p>
       <%= f.text_field :longitude,class:"form", id:"longitude" %>
     </div>
@@ -24,48 +24,50 @@
     </div>
   <%end%>
   <% if user_signed_in? %>
-  <div class="create-date">
-    <%= link_to "csvで出力する",new_subject_attend_path(format: :csv), class:"create-date-message"  %>
-  </div>
-  <div class="attended">
-    <div class="name">
-    名前
-    </div>
-    <div class="number">
-    学籍番号
-    </div>
-    <div class="time">
-    時間
-    </div>
-    <div class="latitude">
-    緯度
-    </div>
-    <div class="longitude">
-    経度
-    </div>
-  </div>
-    <%if @attends.exists?%>
-      <% @attends.each do |attend|%>
-        <div class="attended">
-        <div class="name">
-        <%= attend.name%>
-        </div>
-        <div class="number">
-        <%= attend.student_number%>
-        </div>
-        <div class="time">
-        <%= attend.created_at.to_s(:datetime_jp)%>
-        </div>
-        <div class="latitude">
-        <%= attend.latitude%>
-        </div>
-        <div class="longitude">
-        <%= attend.longitude%>
-        </div>
+  <div class="user-contents">
+    <div class="attended">
+      <div class="name">
+      名前
       </div>
-      <%end%>
+      <div class="number">
+      学籍番号
+      </div>
+      <div class="time">
+      入力時間
+      </div>
+      <div class="latitude">
+      緯度
+      </div>
+      <div class="longitude">
+      経度
+      </div>
+    </div>
+    <%if @attends.exists?%>
+    <% @attends.each do |attend|%>
+    <div class="attended">
+      <div class="name">
+      <%= attend.name%>
+      </div>
+      <div class="number">
+      <%= attend.student_number%>
+      </div>
+      <div class="time">
+      <%= attend.created_at.to_s(:datetime_jp)%>
+      </div>
+      <div class="latitude">
+      <%= attend.latitude%>
+      </div>
+      <div class="longitude">
+      <%= attend.longitude%>
+      </div>
+    </div>
     <%end%>
-    <%= button_to "保存できたので削除",destroy_all_subject_attends_path, method: :delete , class:"delete-btn"%>
+    <%end%>
+    <div class="create-date">
+      <%= link_to "csvで出力する",new_subject_attend_path(format: :csv), class:"create-date-message"  %>
+      <%= link_to "保存できたので削除",destroy_all_subject_attends_path, method: :delete , class:"delete-btn"%>
+    </div>
+  </div>
   <%end%>
 </div>
 <%= render "shared/footer" %>

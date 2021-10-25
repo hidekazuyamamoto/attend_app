@@ -5,6 +5,6 @@ class Attend < ApplicationRecord
     validates :longitude
     validates :student_number
     validates :name
-    validates :ip , uniqueness: true
+    validates :ip, uniqueness: true
   end
 end

@@ -12,8 +12,8 @@
             <%=link_to "出席をとる", new_subject_attend_path(subject.id), class:"subject-attend-btn"%>
           </div>
           <div class="subject-contents-edit">
-            <%= link_to "編集する", edit_subject_path(subject.id), class:"subject-content-edit"%>
-            <%= link_to "削除する", subject_path(subject.id), class:"subject-content-edit", method: :delete%>
+            <%= link_to "編集する", edit_subject_path(subject.id), class:"subject-content-edit left"%>
+            <%= link_to "削除する", subject_path(subject.id), class:"subject-content-edit rigth", method: :delete%>
           </div>
         </div>
       <% end %>

@@ -6,7 +6,7 @@ class Week < ActiveHash::Base
     { id: 4, name: '水曜日' },
     { id: 5, name: '木曜日' },
     { id: 6, name: '金曜日' },
-    { id: 7, name: '土曜日' },
+    { id: 7, name: '土曜日' }
   ]
   include ActiveHash::Associations
   has_many :subjects

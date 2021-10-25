@@ -1,0 +1,66 @@
+.form-content{
+  text-align: center;
+}
+.title{
+  font-size: 50px;
+  font-weight: 900;
+  margin-bottom: 50px;
+}
+.sub_title{
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.form{
+  height: 20px;
+  width: 200px;
+  background-color: white;
+  border: 1px solid black;
+  margin-bottom: 30px;
+}
+.user-contents{
+  margin-top: 50px;
+  width: 100%;
+}
+.attended{
+  font-size: 20px;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin: 0 auto;
+}
+.name, .number, .time, .latitude,.longitude{
+  border:2px solid black;
+  width: 20%;
+  text-align: center;
+}
+.create-date{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 50px;
+}
+.create-date-message{
+  margin-right: 20px;
+}
+.delete-btn, .create-date-message{
+  font-size: 20px;
+  border: 1px solid black;
+  padding: 10px;
+  box-shadow: 0px 2px 2px black;
+  background-color: blanchedalmond;
+  font-weight: 800;
+}
+.hidden{
+  display: none;
+}
+.alert{
+  color: red;
+  font-size: 30px;
+}
+.exit{
+  font-size: 30px;
+  color: blue;
+  
+}

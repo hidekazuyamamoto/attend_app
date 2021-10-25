@@ -1,10 +1,8 @@
 class AttendsController < ApplicationController
   require 'csv'
-  
+
   def index
-    if user_signed_in?
-    @subject = Subject.where(user_id: current_user.id).order("week_id ASC")
-    end
+    @subject = Subject.where(user_id: current_user.id).order('week_id ASC') if user_signed_in?
   end
 
   def new
@@ -13,7 +11,7 @@ class AttendsController < ApplicationController
     @attends = Attend.all
     respond_to do |format|
       format.html
-      format.csv do |csv|
+      format.csv do |_csv|
         send_posts_csv(@attends)
       end
     end
@@ -27,32 +25,35 @@ class AttendsController < ApplicationController
       render :new
     end
   end
+
   def destroy_all
     Attend.destroy_all
     redirect_to root_path
   end
 
-    private
+  private
 
-    def params_attend
-      @ip = request.remote_ip
-      params.require(:attend).permit(:name ,:student_number, :latitude, :longitude).merge(ip: @ip, subject_id: params[:subject_id])
-    end
-    def send_posts_csv(attends)
-      csv_data = CSV.generate do |csv|
-        column_names = %w(名前 学籍番号 出席時間 緯度 経度)
-        csv << column_names
-        attends.each do |attend|
-          column_values = [
-            attend.name,
-            attend.student_number,
-            attend.created_at,
-            attend.latitude,
-            attend.longitude
-          ]
-          csv << column_values
-        end
+  def params_attend
+    @ip = request.remote_ip
+    params.require(:attend).permit(:name, :student_number, :latitude, :longitude).merge(ip: @ip,
+                                                                                        subject_id: params[:subject_id])
+  end
+
+  def send_posts_csv(attends)
+    csv_data = CSV.generate do |csv|
+      column_names = %w[名前 学籍番号 出席時間 緯度 経度]
+      csv << column_names
+      attends.each do |attend|
+        column_values = [
+          attend.name,
+          attend.student_number,
+          attend.created_at,
+          attend.latitude,
+          attend.longitude
+        ]
+        csv << column_values
       end
-      send_data(csv_data, filename: "出席一覧.csv")
     end
+    send_data(csv_data, filename: '出席一覧.csv')
+  end
 end
