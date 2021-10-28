@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   username: root
-  password: <%= 04151526Jp %>
+  password: <%= 04151526jp %>
   socket: /var/lib/mysql/mysql.sock
